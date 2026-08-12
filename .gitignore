@@ -1,0 +1,5 @@
+raw/
+paper/
+__pycache__/
+*.pyc
+STATUS.md

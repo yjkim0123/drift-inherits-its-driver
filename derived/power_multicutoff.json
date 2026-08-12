@@ -1,0 +1,146 @@
+{
+  "spec": {
+    "data": "KPX national hourly demand 2013-2025",
+    "features": [
+      "hour",
+      "dow",
+      "month",
+      "is_weekend",
+      "doy",
+      "lag1",
+      "lag24",
+      "lag168",
+      "roll24"
+    ],
+    "weather": "none (Open-Meteo pull covers 2021-2025 only)",
+    "target": "hourly national demand (MW)",
+    "metric": "MAPE (%); degradation reported in percentage points",
+    "baseline": "random 10% in-era holdout of the training window, seed 42",
+    "models": {
+      "primary": "XGBoost(n=500, depth=6, lr=0.05, subsample=0.9)",
+      "secondary": "LinearRegression on standardized features"
+    },
+    "seed": 42
+  },
+  "panel_hours": 113784,
+  "non_hourly_steps": 0,
+  "elapsed_correlation": {
+    "cutoff_2016_xgb": {
+      "r": 0.9699,
+      "p": 1.5125744133819578e-05,
+      "n": 9
+    },
+    "cutoff_2016_lin": {
+      "r": 0.937,
+      "p": 0.00019418653155827645,
+      "n": 9
+    },
+    "cutoff_2018_xgb": {
+      "r": 0.9952,
+      "p": 3.098644920114427e-06,
+      "n": 7
+    },
+    "cutoff_2018_lin": {
+      "r": 0.9717,
+      "p": 0.0002555945513295557,
+      "n": 7
+    },
+    "cutoff_2020_xgb": {
+      "r": 0.992,
+      "p": 0.0008577984985638215,
+      "n": 5
+    },
+    "cutoff_2020_lin": {
+      "r": 0.9728,
+      "p": 0.005374339884983789,
+      "n": 5
+    }
+  },
+  "identification_table": [
+    {
+      "calendar_year": 2021,
+      "train_to_2016": 0.8068,
+      "elapsed_2016": 5,
+      "train_to_2018": 0.5256,
+      "elapsed_2018": 3,
+      "train_to_2020": 0.3513,
+      "elapsed_2020": 1,
+      "oldest_over_newest": 2.297
+    },
+    {
+      "calendar_year": 2022,
+      "train_to_2016": 1.1363,
+      "elapsed_2016": 6,
+      "train_to_2018": 0.6879,
+      "elapsed_2018": 4,
+      "train_to_2020": 0.5264,
+      "elapsed_2020": 2,
+      "oldest_over_newest": 2.159
+    },
+    {
+      "calendar_year": 2023,
+      "train_to_2016": 1.0909,
+      "elapsed_2016": 7,
+      "train_to_2018": 0.784,
+      "elapsed_2018": 5,
+      "train_to_2020": 0.6176,
+      "elapsed_2020": 3,
+      "oldest_over_newest": 1.766
+    },
+    {
+      "calendar_year": 2024,
+      "train_to_2016": 1.334,
+      "elapsed_2016": 8,
+      "train_to_2018": 0.9223,
+      "elapsed_2018": 6,
+      "train_to_2020": 0.7503,
+      "elapsed_2020": 4,
+      "oldest_over_newest": 1.778
+    },
+    {
+      "calendar_year": 2025,
+      "train_to_2016": 1.5253,
+      "elapsed_2016": 9,
+      "train_to_2018": 1.1315,
+      "elapsed_2018": 7,
+      "train_to_2020": 0.9557,
+      "elapsed_2020": 5,
+      "oldest_over_newest": 1.596
+    }
+  ],
+  "same_elapsed_across_cutoffs": {
+    "1": {
+      "2016": 0.1359,
+      "2018": 0.1613,
+      "2020": 0.3513
+    },
+    "2": {
+      "2016": 0.5235,
+      "2018": 0.3822,
+      "2020": 0.5264
+    },
+    "3": {
+      "2016": 0.3418,
+      "2018": 0.5256,
+      "2020": 0.6176
+    },
+    "4": {
+      "2016": 0.5244,
+      "2018": 0.6879,
+      "2020": 0.7503
+    },
+    "5": {
+      "2016": 0.8068,
+      "2018": 0.784,
+      "2020": 0.9557
+    },
+    "6": {
+      "2016": 1.1363,
+      "2018": 0.9223
+    },
+    "7": {
+      "2016": 1.0909,
+      "2018": 1.1315
+    }
+  }
+}
