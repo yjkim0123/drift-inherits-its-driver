@@ -494,6 +494,9 @@ def main():
     for ref, label in TABLE_REFS.items():
         # leave "IEA-PVPS, 2020, Table 3" alone: that table is in a cited source
         tex = re.sub(r"(?<!, )\b" + ref + r"\b", "Table~\\\\ref{" + label + "}", tex)
+    # A sentence that continues after a display equation is not a new paragraph;
+    # pandoc turns the blank line into one and LaTeX indents it.
+    tex = re.sub(r"(\\end\{equation\}\n\n)([a-z])", r"\1\\noindent \2", tex)
     tex = tex.replace(r"\tightlist", "")
     # the Markdown's '---' section separators become printed rules in LaTeX
     tex = tex.replace(r"\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}", "")
